@@ -10,16 +10,118 @@ class cwiccer_shortcode
     function run($atts, $content, $tag)     {
 
         $this->enqueue_css();
-        $this->do_cwiccer_logo_html();
+        //$this->do_cwiccer_logo_html();
+        $this->do_cwiccer_logo_before();
+        $this->do_cwiccer_logo_inner();
+        $this->do_cwiccer_logo_after();
         return bw_ret();
     }
 
-    function enqueue_css()
-    {
+    function enqueue_css()   {
         if (!wp_style_is('cwiccer', 'registered')) {
             wp_register_style('cwiccer', oik_url('css/cwiccer.css', 'cwiccer'), false);
         }
         wp_enqueue_style('cwiccer');
+    }
+
+    function do_cwiccer_logo_before() {
+        $html = '<article class="lh-root lh-vars">
+        <div class="lh-scores-wrapper">
+        <div class="lh-scores-container">
+            <div class="lh-pyro">
+                <div class="lh-before"></div>
+                <div class="lh-after"></div>
+            </div>
+            <div class="lh-scores-header">
+            ';
+        e( $html );
+    }
+
+    function do_cwiccer_logo_inner() {
+
+        $this->do_score( 35, 'c' );
+        $this->do_score( 46, 'w' );
+        $this->do_score( 57, 'i' );
+        $this->do_score( 68, 'c' );
+        $this->do_score( 79, 'c' );
+        $this->do_score( 90, 'e' );
+        $this->do_score( 99, 'r');
+
+
+    }
+
+    function do_score( $score, $gauge_string=null ) {
+        $score = $this->validate_score( $score );
+        $degrees = $this->degrees( $score );
+        if ( null === $gauge_string ) {
+            $gauge_string = $score;
+        }
+
+        $result = $this->score( $score );
+
+        $this->do_gauge( $score, $degrees, $result, $gauge_string );
+
+
+
+    }
+
+    function do_gauge( $score, $degrees, $result, $gauge_string ) {
+
+        c( $score );
+        c( $degrees );
+        c( $result );
+        c( $gauge_string );
+
+        $html = '<a class="lh-gauge__wrapper lh-gauge__wrapper--';
+        $html .= $result;
+        $html .= '" href="#c35">';
+        $html .= '<div class="lh-gauge__svg-wrapper">';
+        $html .= '<svg class="lh-gauge" viewBox="0 0 120 120">';
+        $html .= '<circle class="lh-gauge-base" r="56" cx="60" cy="60" stroke-width="8"></circle>';
+        $html .= '<circle class="lh-gauge-arc" r="56" cx="60" cy="60" stroke-width="8" style="transform: rotate(-87.9537deg); stroke-dasharray: ';
+        $html .= $degrees;
+        $html .= ', 351.858;"></circle>';
+        $html .= '</svg></div><div class="lh-gauge__percentage">';
+        $html .= $gauge_string;
+        $html .= '</div></a>';
+        e( $html );
+    }
+
+    /**
+     * Validates the score.
+     * If numeric it should be between 0 and 100
+     * If not then determine it from the first character's binary value.
+    */
+    function validate_score( $score ) {
+        // @TODO
+       return $score;
+    }
+
+    function degrees( $score ) {
+        $degrees = 360 * $score / 100;
+        return $degrees;
+    }
+
+    function score( $score ) {
+        if ( $score < 50 ) {
+            $result = 'fail';
+        } elseif ( $score < 90 ) {
+            $result = 'average';
+        } else {
+            $result = 'pass';
+        }
+        return $result;
+    }
+
+
+    function do_cwiccer_logo_after() {
+        $html = '
+        </div>
+        </div>
+        </div>
+        </article>
+        ';
+        e( $html );
     }
 
     /**
@@ -29,9 +131,7 @@ class cwiccer_shortcode
     function do_cwiccer_logo_html()     {
 
         $html = '<article class="lh-root lh-vars">
-
-
-    <div class="lh-scores-wrapper">
+        <div class="lh-scores-wrapper">
         <div class="lh-scores-container">
             <div class="lh-pyro">
                 <div class="lh-before"></div>
@@ -96,9 +196,11 @@ class cwiccer_shortcode
                     </a>
 
 
-               </div></div> </div>
-</article>
-';
+               </div>
+        </div>
+        </div>
+    </article>
+    ';
         e($html);
     }
 
