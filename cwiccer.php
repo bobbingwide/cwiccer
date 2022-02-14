@@ -38,7 +38,7 @@ function cwiccer_plugins_loaded() {
     cwiccer_boot_libs();
     oik_require_lib( "bwtrace" );
     oik_require_lib( "bobbfunc" );
-    bw_load_plugin_textdomain( "cwiccer");
+    //bw_load_plugin_textdomain( "cwiccer");
     cwiccer_enable_autoload();
 }
 
@@ -75,7 +75,5 @@ function cwiccer_query_autoload_classes( $classes ) {
 
     return( $classes );
 }
-
-
 
 cwiccer_loaded();
