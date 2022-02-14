@@ -22,14 +22,11 @@ function cwiccer_init() {
     add_shortcode( 'cwiccer', 'cwiccer_shortcode');
 }
 
-function cwiccer_shortcode( $atts=null , $content=null, $tag=null ) {
-
+function cwiccer_shortcode( $atts, $content, $tag ) {
     $html = "cwiccer";
     $cwiccer_shortcode = new cwiccer_shortcode();
     $html = $cwiccer_shortcode->run( $atts, $content, $tag );
-
     return $html;
-    
 }
 
 /**

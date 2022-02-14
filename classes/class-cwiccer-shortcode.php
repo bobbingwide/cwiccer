@@ -10,9 +10,18 @@ class cwiccer_shortcode
     function run($atts, $content, $tag)     {
 
         $this->enqueue_css();
+        $scores = bw_array_get_from( $atts, "scores,0", null );
+        //p( "Scores: $scores" );
         //$this->do_cwiccer_logo_html();
         $this->do_cwiccer_logo_before();
-        $this->do_cwiccer_logo_inner();
+        if ( null === $scores ) {
+            $this->do_cwiccer_logo_inner();
+        } else {
+            $scores = bw_as_array( $scores);
+            foreach ( $scores as $score ) {
+                $this->do_score( $score );
+            }
+        }
         $this->do_cwiccer_logo_after();
         return bw_ret();
     }
