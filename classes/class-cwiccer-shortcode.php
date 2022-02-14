@@ -60,14 +60,12 @@ class cwiccer_shortcode
     }
 
     function do_score( $score, $gauge_string=null ) {
-        $score = $this->validate_score( $score );
-        $degrees = $this->degrees( $score );
         if ( null === $gauge_string ) {
             $gauge_string = $score;
         }
-
+        $score = $this->validate_score( $score );
+        $degrees = $this->degrees( $score );
         $result = $this->score( $score );
-
         $this->do_gauge( $score, $degrees, $result, $gauge_string );
 
 
@@ -83,7 +81,9 @@ class cwiccer_shortcode
 
         $html = '<a class="lh-gauge__wrapper lh-gauge__wrapper--';
         $html .= $result;
-        $html .= '" href="#c35">';
+        $html .= '" href="#';
+        $html .= $gauge_string . $score;
+        $html .= '">';
         $html .= '<div class="lh-gauge__svg-wrapper">';
         $html .= '<svg class="lh-gauge" viewBox="0 0 120 120">';
         $html .= '<circle class="lh-gauge-base" r="56" cx="60" cy="60" stroke-width="8"></circle>';
@@ -103,6 +103,12 @@ class cwiccer_shortcode
     */
     function validate_score( $score ) {
         // @TODO
+        $score = trim( $score );
+        if ( !is_numeric( $score )) {
+            $score = ord( $score );
+            $score /= 2.56; // Reduce to a maximum of 100.
+        }
+
        return $score;
     }
 
