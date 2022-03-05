@@ -106,7 +106,11 @@ class cwiccer_shortcode
         $score = trim( $score );
         if ( !is_numeric( $score )) {
             $score = ord( $score );
-            $score /= 2.56; // Reduce to a maximum of 100.
+            if ( $score > 128 ) {
+                $score /= 2.56; // Reduce to a maximum of 100.
+            } else {
+                $score /= 1.28;
+            }
         }
 
        return $score;
