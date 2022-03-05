@@ -1,6 +1,6 @@
-<?php // (C) Copyright Bobbing Wide 2009-2021
+<?php // (C) Copyright Bobbing Wide 2009-2022
 if ( !defined( "BOBBFORMS_INCLUDED" ) ) {
-define( "BOBBFORMS_INCLUDED", "3.2.9" );
+define( "BOBBFORMS_INCLUDED", "3.3.0" );
 
 /**
  * Library: bobbforms
