@@ -4,12 +4,14 @@
 Plugin Name: cwiccer
 Plugin URI: https://www.oik-plugins.com/oik-plugins/cwiccer
 Description: Display PageSpeed Insights performance scores in a row
-Version: 0.0.0
+Version: 0.0.1
 Author: bobbingwide
-Author URI: https://www.oik-plugins.com/author/bobbingwide
+Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: cwiccer
 Domain Path: /languages/
 License: GPLv2
+
+@Copyright (C) Copyright Bobbing Wide 2022-2023
  */
 
 function cwiccer_loaded() {

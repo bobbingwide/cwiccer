@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcode, cwiccer
 * Requires at least: 5.9
-* Tested up to: 5.9
-* Stable tag: 0.0.0
+* Tested up to: 6.4-RC1
+* Stable tag: 0.0.1
 * Gutenberg compatible: Yes
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,18 +24,20 @@ Delivers the [cwiccer] shortcode to display PageSpeed Insights performance score
 1. See the banner image
 
 ## Upgrade Notice 
+# 0.0.1 
+Upgrade for support for PHP 8.1 and PHP 8.2
+
 # 0.0.0 
 First version for cwiccer.com
 
 ## Changelog 
+# 0.0.1 
+* Changed: Support PHP 8.1 and PHP 8.2 #3
+* Tested: With WordPress 6.4-RC1 and WordPress Multisite
+* Tested: With PHP 8.0, PHP 8.1 and PHP 8.2
+* Tested: With PHPUnit 9.6
+
 # 0.0.0 
 * Added: [cwiccer] shortcode #1
 * Tested: With WordPress 5.9 and WordPress Multi Site
 * Tested: With PHP 8.0
-
-
-
-
-
-
-
