@@ -9,7 +9,7 @@
     <!-- for PHPUnit 9.6 -->
     <testsuites>
         <testsuite name="cwiccer">
-            <directory prefix="test-" suffix=".php">tests/</directory>
+            <directory prefix="Tests_" suffix=".php">tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
